@@ -1,0 +1,23 @@
+{
+  "name": "tutorin",
+  "version": "0.0.0",
+  "description": "Server for the online private tutoring platform",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anthonyray/tutorin.git"
+  },
+  "author": "Anthony REINETTE",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/anthonyray/tutorin/issues"
+  },
+  "homepage": "https://github.com/anthonyray/tutorin",
+  "dependencies": {
+    "node-static": "~0.7.3",
+    "socket.io": "~0.9.16"
+  }
+}
