@@ -10,30 +10,171 @@
 <title>POC</title>
 
 <style>
+	#localVideo
+	{
+		position : fixed;
+		left : 0px;
+		bottom : 0px;
+		width : 400px; 
+		height : 300px;
+	}
+	#remoteVideo
+	{
+		position : fixed;
+		right : -400px;
+		bottom : 0px;
+		width : 400px; 
+		height : 300px;
+	}
+	body
+	{
+		background-color: #439fde;
+	}
+
+	.controls
+	{
+		width : 100%;
+		height : 50px;
+		position : fixed;
+		bottom : 0px;
+		left : 0px;
+		background-color : #27ae60;
+	}
+
+	.controls #container
+	{
+		margin : auto;
+		width : 200px;
+		margin-top : 5px;
+	}
+
+	.controls #container a
+	{
+		background-color : #c19de5;
+		color : white;
+		padding : 3px;
+		padding-right: 5px;
+		padding-left: 5px;
+		margin-right : 5px;
+		margin-top : 5px;
+		margin-bottom : 5px;
+		border-radius:4px;
+		-webkit-box-shadow: 0 4px 0 0 #b284dc;
+		-moz-box-shadow: 0 4px 0 0 #b284dc;
+		box-shadow: 0 4px 0 0 #b284dc;
+	}
 </style>
 
 </head>
 
 <body>
-
-	<video>Your browser doesn't support WebRTC, please upgrade to a newer version</video>
+	<video id="localVideo" autoplay> Your browser doesn't support WebRTC, please upgrade to a newer version</video>
+	<video id="remoteVideo" autoplay></video>
+	<div class="controls">
+		<div id="container"><a id="startButton">Start</a><a id="callButton">Call</a><a id="hangUpButton">Hang Up</a></div>
+	</div>
 
 <script>
-	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia ; 
-	constraints = {video : true};
+	var localStream, localPeerConnection, remotePeerConnection;
 
-	function successCallback(localMediaStream){
-		window.stream = localMediaStream ; // Rendre le stream accessible depuis la console.
-		var video = document.querySelector("video");
-		video.src = window.URL.createObjectURL(localMediaStream);
-		video.play();
+	var localVideo = document.getElementById('localVideo');
+	var remoteVideo = document.getElementById('remoteVideo');
+
+	var startButton = document.getElementById('startButton');
+	var callButton = document.getElementById('callButton');
+	var hangUpButton = document.getElementById('hangUpButton');
+	startButton.disabled = false;
+	callButton.disabled = true;
+	hangUpButton.disabled = true;
+
+	startButton.onclick = start;
+	callButton.onclick = call;
+	hangUpButton.onclick = hangup;
+
+	function trace(text)
+	{
+		console.log((performance.now() / 1000).toFixed(3) + ": " + text);
 	}
 
-	function errorCallback(error){
-		console.log("Erreur avec le navigator.getUserMedia :",error);
+	function gotStream(stream){
+		trace("Local stream received");
+		localVideo.src = URL.createObjectURL(stream);
+		localStream = stream;
+		callButton.disabled = false;
 	}
 
-	navigator.getUserMedia(constraints,successCallback,errorCallback);
+	function getLocalStreamError(error)
+	{
+		console.log('Error while getting local stream : ',error);
+	}
+
+	function start()
+	{
+		trace("Requesting local stream");
+		startButton.disabled = true;
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia ;
+		var constraints = {audio : true, video : true};
+		navigator.getUserMedia(constraints,gotStream,getLocalStreamError); 
+
+	}
+
+	function call()
+	{
+		callButton.disabled = true;
+		hangUpButton.disabled = false;
+		trace(" Starting call");
+
+		if (localStream.getVideoTracks().length > 0){
+			trace('Using video device :' + localStream.getVideoTracks()[0].label);
+		}
+		if (localStream.getAudioTracks().length > 0){
+			trace('Using audio device :'+localStream.getAudioTracks()[0].label);
+		}
+
+		var servers = null;
+
+		localPeerConnection = new webkitRTCPeerConnection(servers);
+		trace("Created local peer connection object localPeerConnection");
+		localPeerConnection.onicecandidate = gotLocalIceCandidate;
+
+		remotePeerConnection = new webkitRTCPeerConnection(servers);
+		trace("Created remote peer connection object remotePeerConnection");
+		remotePeerConnection.onicecandidate = gotRemoteIceCandidate;
+		remotePeerConnection.onaddstream = gotRemoteStream;
+
+		localPeerConnection.addStream(localStream);
+		trace("Added localStream to localPeerConnection");
+		localPeerConnection.createOffer(gotLocalDescription);
+	}
+
+	function gotLocalDescription(description)
+	{
+		localPeerConnection.setLocalDescription(description);
+		trace("Offer from localPeerConnection : "+description.sdp);
+		remotePeerConnection.setRemoteDescription(description);
+		remotePeerConnection.createAnswer(gotRemoteDescription);
+	}
+
+	function gotRemoteDescription(description)
+	{
+		remotePeerConnection.setLocalDescription(description);
+		trace("Answer from remotePeerConnection : "+description.sdp);
+		localPeerConnection.setRemoteDescription(description);
+	}
+
+	function hangup()
+	{
+		trace("Ending call");
+		localPeerConnection.close();
+		remotePeerConnection.close();
+		localPeerConnection = null;
+		remotePeerConnection = null;
+		
+	}
+
+	function gotLocalIceCandida
+
+
 </script>
 
 </body>
