@@ -15,7 +15,25 @@
 </head>
 
 <body>
+
+	<video>Your browser doesn't support WebRTC, please upgrade to a newer version</video>
+
 <script>
+	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia ; 
+	constraints = {video : true};
+
+	function successCallback(localMediaStream){
+		window.stream = localMediaStream ; // Rendre le stream accessible depuis la console.
+		var video = document.querySelector("video");
+		video.src = window.URL.createObjectURL(localMediaStream);
+		video.play();
+	}
+
+	function errorCallback(error){
+		console.log("Erreur avec le navigator.getUserMedia :",error);
+	}
+
+	navigator.getUserMedia(constraints,successCallback,errorCallback);
 </script>
 
 </body>
