@@ -1,14 +1,38 @@
-var static = require('node-static');
+var express = require('express');
+var routes = require('./routes');
+var path = require('path');
 var http = require('http');
-var webroot = './public';
 
-var file = new(static.Server)(webroot);
+var app = express();
 
-var app = http.createServer(function(req,res){
-	file.serve(req,res);
-}).listen(2014);
+///////////////////////////////////////////////
 
-var io = require('socket.io').listen(app);
+app.set('port', process.env.PORT || 2014);
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded());
+app.use(express.methodOverride());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
+
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
+}
+
+app.get('/', routes.index);
+app.get('/:room',routes.room);
+
+
+var server = http.createServer(app);
+server.listen(app.get('port'),function(){
+	console.log("Express server listening on port : ",app.get('port'));
+});
+
+var io = require('socket.io').listen(server);
+
+//////////////////////////////////////////////////////////////////////////
 
 io.sockets.on('connection',function(socket){
 
