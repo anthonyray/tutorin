@@ -1,6 +1,8 @@
 var static = require('node-static');
 var http = require('http');
-var file = new(static.Server)();
+var webroot = './public';
+
+var file = new(static.Server)(webroot);
 
 var app = http.createServer(function(req,res){
 	file.serve(req,res);
