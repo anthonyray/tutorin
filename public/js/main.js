@@ -110,7 +110,7 @@ function handleUserMediaError(error){
   console.log('navigator.getUserMedia error: ', error);
 }
 
-var constraints = {video: true};
+var constraints = {video: true,audio:true};
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 navigator.getUserMedia(constraints, handleUserMedia, handleUserMediaError);
 

@@ -6,69 +6,52 @@
 <meta name="keywords" content="cours particuliers,cpge,prepa,en ligne" />
 <meta name="description" content="Plateforme de cours particuliers en ligne" />
 <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
-<title>POC</title>
-
-<style>
-	#localVideo
-	{
-		position : fixed;
-		left : 0px;
-		bottom : 0px;
-		width : 400px; 
-		height : 300px;
-	}
-	#remoteVideo
-	{
-		position : fixed;
-		right : 0px;
-		bottom : 0px;
-		width : 400px; 
-		height : 300px;
-	}
-	body
-	{
-		background-color: #439fde;
-	}
-
-	.controls
-	{
-		width : 100%;
-		height : 50px;
-		position : fixed;
-		bottom : 0px;
-		left : 0px;
-		background-color : #27ae60;
-	}
-
-	.controls #container
-	{
-		margin : auto;
-		width : 200px;
-		margin-top : 5px;
-	}
-
-	.controls #container a
-	{
-		background-color : #c19de5;
-		color : white;
-		padding : 3px;
-		padding-right: 5px;
-		padding-left: 5px;
-		margin-right : 5px;
-		margin-top : 5px;
-		margin-bottom : 5px;
-		border-radius:4px;
-		-webkit-box-shadow: 0 4px 0 0 #b284dc;
-		-moz-box-shadow: 0 4px 0 0 #b284dc;
-		box-shadow: 0 4px 0 0 #b284dc;
-	}
-</style>
-
+<title>Anytutor.in</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
-	<video id="localVideo" autoplay muted> Your browser doesn't support WebRTC, please upgrade to a newer version</video>
-	<video id="remoteVideo" autoplay></video> 
+	<nav>
+	  <div class="brand">Anytutor.in</div>
+	  <div class="timer">23:45</div>
+	</nav>
+	<div id="container">
+	  <div id="panel">
+	    <div class="presence container">
+	      <div class="title">En cours avec</div>
+	      <div class="content">
+	        
+	        <img src="img/profile.jpg" class="profilePicture"></img>
+	        <p class="infos">Anthony REINETTE</p>
+	      
+	      </div>  
+	    </div>
+	  
+	  <div class="remoteCam container">
+	    <div class="title">
+	      Anthony REINETTE
+	    </div>
+	    <div class="content">
+	    	<video id="remoteVideo" autoplay></video> 
+	    </div>
+	  </div>
+	  <div class="localCam container">
+	    <div class="title">
+	      Vous
+	    </div>
+	    <div class="content">
+	    	<video id="localVideo" autoplay muted><div class="cameraControls">BONJOUR JE SUIS NOUVEAU DANS LE QUARTIER YOURE THE NICEST PERSON</div></video>
+	    </div>
+	  </div>
+	    </div>
+	  </div>
+	  
+	  
+	  
+	  
+	  
+	  
+	</div>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/main.js"></script>
