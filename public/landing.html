@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta name="keywords" content="cours particuliers,cpge,prepa,en ligne" />
+<meta name="description" content="Plateforme de cours particuliers en ligne" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<title>Anytutor.in</title>
+<link rel="stylesheet" type="text/css" href="css/landing.css">
+</head>
+
+<body>
+<nav>
+  <div class="brand">Anytutor.in</div>
+  <div class="timer"></div>
+</nav>
+<div id="container">
+  <div id="prompt">
+    <h1>Bienvenue,</h1>
+    <br>
+    <br>
+    <br>
+    <form onsubmit="return redirectToRoom();">
+      <label for="room">Entrez un nom de classe</label>
+      <input class="roomInput" type="text" id="roomName" value="" autofocus><input class="roomSubmit" type="submit" value="Rejoindre"><br>
+    </form>
+  </div>
+</div>
+</body>
+<script type="text/javascript">
+	function redirectToRoom(){
+		var response = document.getElementById('roomName').value;
+		if (response !==''){
+			window.location.href = response;
+		}
+		else
+		{
+			alert('eeeeeeeeeeeeeeeef');
+			return false;
+		}
+	}
+</script>
+</html>
