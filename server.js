@@ -5,7 +5,9 @@ var http = require('http');
 
 var app = express();
 
-///////////////////////////////////////////////
+/**
+*	Middleware configuration
+**/
 
 app.set('port', process.env.PORT || 2014);
 app.use(express.favicon());
@@ -31,8 +33,6 @@ server.listen(app.get('port'),function(){
 });
 
 var io = require('socket.io').listen(server);
-
-//////////////////////////////////////////////////////////////////////////
 
 io.sockets.on('connection',function(socket){
 

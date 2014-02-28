@@ -1,7 +1,11 @@
-exports.index = function(req, res){
-  res.sendfile('public/index.html');
+exports.index = function(req,res){
+	res.sendfile('public/index.html');
+};
+
+exports.chooseroom = function(req, res){
+	res.sendfile('public/landing.html');
 };
 
 exports.room = function(req,res){
-	res.sendfile('public/index.html');
+	res.sendfile('public/room.html');
 };
