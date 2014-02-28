@@ -1,0 +1,89 @@
+/**
+*	General Layout
+**/
+
+.navbar
+{
+	border-bottom-style: solid;
+	border-color : #98ADB0;
+	margin-bottom: 0px;
+}
+
+.navbar-title
+{
+	margin-top : 15px;
+	margin-bottom : 15px;
+	text-align: center;	
+}
+
+.navbar-button
+{
+	position : absolute;
+	top : 0;
+	left : 0;
+	width : 50px;
+	height: 50px;
+	background-image: url('../img/menu.png');
+	background-repeat:no-repeat;
+	background-position: center;
+}
+
+.centered-message
+{
+	padding-top : 20%;
+	padding-bottom: 15%;
+}
+
+.marketing-container
+{
+	border-radius: 50%;
+	background : green;
+	width :  100%;
+	height : 100%;
+}
+
+/**
+*	Specific Layout
+**/
+
+#quote-container
+{
+	background-color : #98ADB0;
+	color : white;
+	padding : 5%;
+}
+
+#marketing
+{
+	padding-top : 10%;
+	padding-bottom : 10%;
+}
+
+#contact
+{
+	background-color : #98ADB0;
+	color : white;
+	padding : 5%;
+}
+/**
+*	Helper classes
+**/
+
+.button
+{
+	border-radius: 20px;
+	border-width: 2px;
+	padding : 5px;
+	border-color : #98ADB0;
+	border-style : solid;
+}
+
+.big-icon
+{
+	font-size : 5em;	
+}
+
+.color-bg
+{
+	background : pink;
+}
