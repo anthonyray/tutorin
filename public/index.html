@@ -7,6 +7,7 @@
 	<!-- Latest compiled and minified CSS & JS -->
 	<link rel="stylesheet" media="screen" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+	<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/stylesheet.css">
 	<script src="//code.jquery.com/jquery.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
@@ -23,7 +24,8 @@
 		<div class="row">
 			<div class="centered-message">
 				<h1 class="text-center">Progressez avec les meilleurs,</h1>
-				<h1 class="text-center"><span class="button">EN LIGNE</span></h1>
+				<br>
+				<h4 class="text-center"><span class="button">EN LIGNE</span></h4>
 			</div>
 		</div>
 	</div>
@@ -37,7 +39,7 @@
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 					
-					<div class="text-center"><span class="fa fa-search fa-5x"></span></div>
+					<div class="text-center"><span class="fa fa-search fa-5x turquoise-text"></span></div>
 					<h4 class="text-center">Trouvez</h4>
 					<ul>
 						<li>Choisissez votre matière et votre niveau</li>
@@ -47,7 +49,7 @@
 			
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				<div class="text-center"><span class="fa fa-calendar fa-5x"></span></div>
+				<div class="text-center"><span class="fa fa-calendar fa-5x turquoise-text"></span></div>
 				<h4 class="text-center">Réservez</h4>
 				<ul>
 					<li>Profitez de la plateforme interactive d'Anytutor.in où vous pourrez consulter les emplois du temps de nos professeurs en temps réel</li>
@@ -56,7 +58,7 @@
 				</ul>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-				<div class="text-center"><span class="fa fa-trophy fa-5x"></span></div>
+				<div class="text-center"><span class="fa fa-trophy fa-5x turquoise-text"></span></div>
 				<h4 class="text-center">Progressez</h4>
 				<ul>
 					<li>Bénéficiez de nos outils innovants et intuitifs</li>
@@ -70,7 +72,9 @@
 		<div class="row text-center">
 			<h2> Intéressé(e) ?</h2>
 			<p>Laissez nous votre mail, et nous vous contacterons dès que le service sera prêt !</p>
-			<input></input>
+			<form class="form-inline" role="form">
+				<div class="form-group"><input id="email" placeholder="Entrez votre mail"></div><button type="submit" class="btn" id="submit-button">Sign in</button>
+			</form>
 		</div>
 	</div>
 </body>
