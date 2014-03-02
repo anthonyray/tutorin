@@ -89,11 +89,14 @@ body
 
 #submit-button
 {
-	border-radius: 5px;
+	border-radius: 0px;
 	color : white;
 	border-width: 2px;
 	padding : 8px;
 	background-color: #D75D48;
+	border-bottom-style: solid;
+	border-bottom-color : #ad4a39;
+	border-bottom-width: 3px;
 }
 
 #email
@@ -107,14 +110,14 @@ body
 	font-size : 5em;	
 }
 
-.color-bg
-{
-	background : pink;
-}
-
 .red-text
 {
 	color :#D75D48;
+}
+
+.blue-text
+{
+	color : #34495e;
 }
 
 .turquoise-text
