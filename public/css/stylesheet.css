@@ -76,11 +76,14 @@ body
 
 .button
 {
-	border-radius: 15px;
+	
 	color : white;
 	border-width: 2px;
 	padding : 8px;
 	background-color: #D75D48;
+	border-bottom-style: solid;
+	border-bottom-color : #ad4a39;
+	border-bottom-width: 3px;
 
 }
 
