@@ -3,12 +3,12 @@
 **/
 body
 {
-	font-family: 'Montserrat';
+	font-family: 'Raleway';
 }
 .navbar
 {
 	border-bottom-style: solid;
-	border-color : #98ADB0;
+	//border-color : #98ADB0;
 	background-color : #34495e;
 	color : white;
 	margin-bottom: 0px;
@@ -21,6 +21,14 @@ body
 	text-align: center;	
 }
 
+.navbar-logo
+{
+	margin-left : 14px;
+	position : absolute;
+	left : 480px;
+	top : -22px;
+}
+
 .navbar-button
 {
 	position : absolute;
@@ -30,13 +38,24 @@ body
 	height: 50px;
 	background-image: url('../img/menu.png');
 	background-repeat:no-repeat;
+}
+
+.bg
+{
+	background-image: url("../img/bg2.jpeg");
+	background-repeat: no-repeat;
 	background-position: center;
+	background-size : 110%;
+
+
 }
 
 .centered-message
 {
-	padding-top : 20%;
+	padding-top : 15%;
 	padding-bottom: 15%;
+
+
 }
 
 .marketing-container
@@ -53,8 +72,8 @@ body
 
 #quote-container
 {
-	background-color : #98ADB0;
-	color : white;
+	background-color : #ecf0f1;
+	//color : white;
 	padding : 5%;
 }
 
@@ -66,7 +85,7 @@ body
 
 #contact
 {
-	background-color : #98ADB0;
+	background-color : #34495e;
 	color : white;
 	padding : 5%;
 }
@@ -78,13 +97,19 @@ body
 {
 	
 	color : white;
-	border-width: 2px;
-	padding : 8px;
+	border-width: 5px;
+	padding : 8px 18px 8px 18px;
+	border-radius : 10px;
 	background-color: #D75D48;
 	border-bottom-style: solid;
 	border-bottom-color : #ad4a39;
-	border-bottom-width: 3px;
+	border-bottom-width: 5px;
 
+}
+
+.button:hover
+{
+	border-bottom-width : 0px;
 }
 
 #submit-button
@@ -105,6 +130,11 @@ body
 	color : black;
 }
 
+.big-text
+{
+	font-size: 4em;
+}
+
 .big-icon
 {
 	font-size : 5em;	
@@ -123,4 +153,9 @@ body
 .turquoise-text
 {
 	color : #1abc9c;
+}
+
+.text-justify
+{
+	text-align : justify;
 }
